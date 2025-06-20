@@ -5,6 +5,9 @@ Real-time image-based virtual try-on
 
 ![Demo GIF](assets/output.gif)
 
+[Watch on YouTube](https://www.youtube.com/watch?v=7hm1yBsFzHc)
+
+
 ## Installation
 
 ```
