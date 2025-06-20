@@ -52,6 +52,14 @@ python
     archivePrefix={arXiv},
     primaryClass={cs.GR}
 }
+@misc{wu2025lowbarrier,
+    title={Low-Barrier Dataset Collection with Real Human Body for Interactive Per-Garment Virtual Try-On},
+    author={Zaiqiang Wu and Yechen Li and Jingyuan Liu and Yuki Shibata and Takayuki Hori and I-Chao Shen and Takeo Igarashi},
+    year={2025},
+    eprint={2506.10468},
+    archivePrefix={arXiv},
+    primaryClass={cs.GR}
+}
 ```
 
 ## Contact Us
