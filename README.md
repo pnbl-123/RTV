@@ -1,5 +1,5 @@
 # Real-Time Virtual Try-On
-Real-time image-based virtual try-on
+This project supports real-time virtual try-on without the need for any special sensors. All you need is a webcam and a PC with a GPU equivalent to an RTX 3060 or higher.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.12348-b31b1b.svg)](https://arxiv.org/abs/2506.12348)
 
