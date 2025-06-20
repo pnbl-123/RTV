@@ -2,6 +2,7 @@
 Real-time image-based virtual try-on
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.12348-b31b1b.svg)](https://arxiv.org/abs/2506.12348)
+
 ![Demo GIF](assets/output.gif)
 
 ## Installation
