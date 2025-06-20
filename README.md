@@ -1,7 +1,11 @@
 # Real-Time Virtual Try-On
-This project supports real-time virtual try-on without the need for any special sensors. All you need is a webcam and a PC with a GPU equivalent to an RTX 3060 or higher.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.12348-b31b1b.svg)](https://arxiv.org/abs/2506.12348)
+
+This project supports real-time virtual try-on without the need for any special sensors. All you need is a webcam and a PC with a GPU equivalent to an RTX 3060 or higher.
+
+Unlike other image-based virtual try-on methods, our approach requires training a dedicated network for each garment in a low-barrier, accessible way (see [this paper](https://arxiv.org/abs/2506.10468)).
+Our method simply overlay the synthesized garment on the top of human body without removing the original garment to achieve real-time performace.
 
 ![Demo GIF](assets/output.gif)
 
