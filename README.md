@@ -37,7 +37,7 @@ git clone
 ```
 
 ### Real-time virtual try-on
-Please make sure that there is a webcam connected to your PC before runing the following command.
+Please make sure that there is a webcam connected to your PC before running the following command.
 ```
 python
 ```
