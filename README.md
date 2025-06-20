@@ -1,6 +1,7 @@
 # Real-Time Virtual Try-On
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.12348-b31b1b.svg)](https://arxiv.org/abs/2506.12348)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow)](https://huggingface.co/wuzaiqiang/rtv_ckpts)
 
 This project supports real-time virtual try-on without the need for any special sensors. All you need is a webcam and a PC with a GPU equivalent to an RTX 3060 or higher.
 
@@ -33,7 +34,7 @@ pip install git+https://github.com/ZaiqiangWu/ROMP.git#subdirectory=simple_romp
 Download our pretained checkpoints by running the follwoing command. We will release the code for trainig your own garment items later.
 ```
 git lfs install
-git clone 
+git clone https://huggingface.co/wuzaiqiang/rtv_ckpts
 ```
 
 ### Real-time virtual try-on
