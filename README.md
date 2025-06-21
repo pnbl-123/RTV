@@ -62,6 +62,3 @@ python demo.py
     primaryClass={cs.GR}
 }
 ```
-
-## Contact Us
-**Zaiqiang Wu**: [wuzaiqiang@zju.edu.cn](mailto:wuzaiqiang@zju.edu.cn) 
