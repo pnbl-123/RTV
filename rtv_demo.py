@@ -12,7 +12,7 @@ from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 
 from util.image_warp import crop2_169, resize_img
 
-from VITON.viton_fullbody import FullBodyFrameProcessor
+from VITON.viton_fullbody_seq import FullBodySeqFrameProcessor
 
 class VitonThread(QThread):
     frameCaptured = pyqtSignal(QImage)
@@ -22,13 +22,11 @@ class VitonThread(QThread):
         self.cap = cv2.VideoCapture(0)
         self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
         self.running = True
-        self.frame_processor = FullBodyFrameProcessor('coat_baseline_vmsdp2ta_576')
+        self.frame_processor = FullBodySeqFrameProcessor('coat_baseline_vmsdp2ta_576')
         #self.frame_processor = FullBodyFrameProcessor('han_baseline_vmsdp2ta_576')
         self.use_vmssdp = False
 
-    def set_taregt_id(self, id):
-        print(id)
-        self.frame_processor.set_target_garment(id)
+
 
     def run(self):
         while self.running:
@@ -41,10 +39,8 @@ class VitonThread(QThread):
                 frame=resize_img(frame,max_height=1024)
                 #frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
                 frame=crop2_169(frame)
-                if not self.use_vmssdp:
-                    frame = self.frame_processor.vmsdp(frame)
-                else:
-                    frame = self.frame_processor.vmssdp(frame)
+
+                frame = self.frame_processor.forward(frame)
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 height, width, channel = frame.shape
                 step = channel * width
