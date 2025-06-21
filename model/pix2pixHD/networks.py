@@ -3,7 +3,7 @@ import torch.nn as nn
 import functools
 from torch.autograd import Variable
 import numpy as np
-from model.AffineTransform import diff_affine_transform, diff_inv_affine_transform
+#from model.AffineTransform import diff_affine_transform, diff_inv_affine_transform
 from .dual_encoder_generator import DualEncoderGenerator
 
 
@@ -325,74 +325,7 @@ class RNNGenerator(nn.Module):
         self.rnn_model.reset()
 
 
-class AlignmentNet(nn.Module):
-    def __init__(self, input_nc, ngf=64, n_downsampling=3, n_blocks=5, norm_layer=nn.BatchNorm2d,
-                 padding_type='reflect'):
-        super(AlignmentNet, self).__init__()
-        activation = nn.ReLU(True)
-        ngf = 16
-        n_blocks = 0
 
-        model = [nn.ReflectionPad2d(3), nn.Conv2d(input_nc, ngf, kernel_size=7, padding=0), norm_layer(ngf), activation]
-        ### downsample
-        for i in range(n_downsampling):
-            mult = 2 ** i
-            model += [nn.Conv2d(ngf * mult, ngf * mult * 2, kernel_size=3, stride=2, padding=1),
-                      norm_layer(ngf * mult * 2), activation]
-
-        ### resnet blocks
-        mult = 2 ** n_downsampling
-        for i in range(n_blocks):
-            model += [ResnetBlock(ngf * mult, padding_type=padding_type, activation=activation, norm_layer=norm_layer)]
-        # reduce channel
-        model += [nn.Conv2d(ngf * mult, ngf * mult // 2, kernel_size=3, stride=1, padding=1),
-                  norm_layer(ngf * mult // 2), activation]
-        model += [nn.Conv2d(ngf * mult // 2, ngf * mult // 4, kernel_size=3, stride=1, padding=1),
-                  norm_layer(ngf * mult // 4), activation]
-        self.model = nn.Sequential(*model)
-
-        self.regressor = nn.Sequential(
-            nn.Linear(65536, 24),
-            nn.ReLU(),
-            nn.Linear(24, 12),
-            nn.ReLU(),
-            nn.Linear(12, 6),
-            nn.ReLU(),
-            nn.Linear(6, 6)
-        )
-
-    def get_affine(self, input):
-        batch_size = input.shape[0]
-        feat = self.model(input)
-        feat = feat.reshape(batch_size, -1)
-        # print(feat.shape)
-        trans = self.regressor(feat)
-        trans = trans.reshape(batch_size, 2, 3)
-        return trans
-
-    def trans_loss(self, input, gt_trans):
-        trans = self.get_affine(input)
-        # print(gt_trans.shape)
-        # print(trans.shape)
-        diff = gt_trans - trans
-        loss0 = (diff[:, :, [0, 1]]).square().mean()
-        loss1 = (diff[:, :, [2]]).square().mean()
-        return loss0 + loss1
-
-    def forward(self, input):
-        trans = self.get_affine(input)
-        input_img = input  # [:,0:3,:,:]
-        img = diff_inv_affine_transform(input_img, trans)
-        return img
-
-    def forward_with_offset(self, input):
-        trans = self.get_affine(input)
-        scale = np.sqrt((trans[0, 0, 0] * trans[0, 1, 1]).cpu().item())
-        offset = torch.Tensor([0.0, 0.1]) * scale
-        trans[:, :, 2] += offset.cuda()
-        input_img = input[:, 0:3, :, :]
-        img = diff_affine_transform(input_img, trans)
-        return img
 
 
 class GlobalGenerator_Mask(nn.Module):
