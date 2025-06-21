@@ -3,7 +3,7 @@ import romp
 from romp import ROMP
 from romp.post_parser import SMPL_parser, body_mesh_projection2image, parsing_outputs
 from romp.utils import convert_cam_to_3d_trans, convert_tensor2numpy
-from SMPL.smpl_np import SMPLModel
+from SMPL.smpl_np_base import SMPLModel
 from SMPL.projection2screen import projection2screencoord
 import torch
 import glm
