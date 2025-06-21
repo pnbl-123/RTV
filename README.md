@@ -40,7 +40,7 @@ git clone https://huggingface.co/wuzaiqiang/rtv_ckpts
 ### Real-time virtual try-on
 Please make sure that there is a webcam connected to your PC before running the following command.
 ```
-python
+python rtv_demo.py
 ```
 
 ## BibTeX
