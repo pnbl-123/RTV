@@ -6,7 +6,7 @@ from util.obj_io import save_obj
 
 
 
-class SMPLModelBase():
+class SMPLModel():
     def __init__(self, model_path='./SMPL/model.pkl'):
         """
     SMPL model.
