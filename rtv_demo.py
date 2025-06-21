@@ -22,7 +22,7 @@ class VitonThread(QThread):
         self.cap = cv2.VideoCapture(0)
         self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
         self.running = True
-        self.frame_processor = FullBodySeqFrameProcessor('coat_baseline_vmsdp2ta_576')
+        self.frame_processor = FullBodySeqFrameProcessor('coat_seq_vmssdp2ta_576')
         #self.frame_processor = FullBodyFrameProcessor('han_baseline_vmsdp2ta_576')
         self.use_vmssdp = False
 
