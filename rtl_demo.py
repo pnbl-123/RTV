@@ -128,6 +128,8 @@ class CameraApp(QMainWindow):
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
+        for i in range(len(garment_name_list)):
+            garment_name_list[i] = garment_name_list[i]+'_vmsdp2ta'
 
         self.viton_thread = VitonThread(garment_name_list)
         self.viton_thread.frameCaptured.connect(self.update_image)
