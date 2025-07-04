@@ -160,6 +160,9 @@ class CameraApp(QMainWindow):
              self.list_widget.setCurrentRow(4)
         elif e.key() == Qt.Key_5:
              self.list_widget.setCurrentRow(5)
+        elif e.key() == Qt.Key_Q or e.key() == Qt.Key_Escape:
+            print("Exiting application...")
+            self.close()  # Triggers closeEvent
 
     def on_selection_changed(self):
         print('selection changed')
