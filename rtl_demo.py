@@ -103,7 +103,7 @@ class CameraApp(QMainWindow):
         
         for i, garment in enumerate(garment_name_list):
             item = QListWidgetItem()
-            item.setIcon(QIcon('./assets/female_garments/'+garment+'_white_bg.jpg'))
+            item.setIcon(QIcon('./assets/garment_images/'+garment+'_white_bg.jpg'))
             item.setData(Qt.UserRole, i)
             self.list_widget.addItem(item)
         #for i in range(9):
