@@ -59,7 +59,7 @@ class CameraApp(QMainWindow):
         self.setMinimumSize(200, 150)
         ## enable fullscreen
         self.setWindowFlag(Qt.FramelessWindowHint)
-        self.showFullScreen()
+        #self.showFullScreen()
 
         self.image_label = QLabel(self)
         self.image_label.setAlignment(Qt.AlignCenter)
