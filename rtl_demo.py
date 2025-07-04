@@ -86,12 +86,13 @@ class CameraApp(QMainWindow):
 
         # Add none item
         item = QListWidgetItem()
-        item.setIcon(QIcon('./figures/none.png'))
+        item.setIcon(QIcon('./assets/none.png'))
         item.setData(Qt.UserRole, -1)
         self.list_widget.addItem(item)
 
         # Add 15 images to the horizontal layout
-        garment_id_list = [3, 2, 17, 18, 22]
+        #garment_id_list = [3, 2, 17, 18, 22]
+        garment_name_list = ['lab_03','lab_04','lab_07','jin_17','jin_18','jin_22']
         self.gid_map = dict()
         self.gid_map[0] = -1
         self.gid_map[1] = 3
@@ -100,9 +101,9 @@ class CameraApp(QMainWindow):
         self.gid_map[4] = 18
         self.gid_map[5] = 22
         
-        for i in garment_id_list:
+        for i, garment in enumerate(garment_name_list):
             item = QListWidgetItem()
-            item.setIcon(QIcon('./figures/female_garments/jin_'+str(i).zfill(2)+'_white_bg.jpg'))
+            item.setIcon(QIcon('./assets/female_garments/'+garment+'_white_bg.jpg'))
             item.setData(Qt.UserRole, i)
             self.list_widget.addItem(item)
         #for i in range(9):
@@ -114,12 +115,7 @@ class CameraApp(QMainWindow):
         self.list_widget.itemSelectionChanged.connect(self.on_selection_changed)
         self.list_widget.installEventFilter(self)
 
-        ## sound effect
-        ## we can change the sound effect we want here...
-        self.sound_filename = './sound/kirakira.mp3'
-        self.sound_url = QUrl.fromLocalFile(QFileInfo(self.sound_filename).absoluteFilePath())
-        self.sound_content = QMediaContent(self.sound_url)
-        self.player = QMediaPlayer()
+
         
         scroll_area.setWidget(container_list)
 
@@ -170,9 +166,7 @@ class CameraApp(QMainWindow):
         if selected_items:
             selected_item = selected_items[0]
             item_id = selected_item.data(Qt.UserRole)  # Retrieve the ID from the item
-            if item_id != -1:
-                self.player.setMedia(self.sound_content)
-                self.player.play()
+
             ## change garment
             self.viton_thread.set_taregt_id(item_id)
             
