@@ -129,7 +129,7 @@ class CameraApp(QMainWindow):
         container.setLayout(layout)
         self.setCentralWidget(container)
 
-        self.viton_thread = VitonThread(garment_id_list)
+        self.viton_thread = VitonThread(garment_name_list)
         self.viton_thread.frameCaptured.connect(self.update_image)
         self.viton_thread.start()
 
