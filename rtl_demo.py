@@ -12,7 +12,7 @@ from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 
 from util.image_warp import crop2_169, resize_img
 
-from VITON.viton import FrameProcessor
+from VITON.viton_upperbody import FrameProcessor
 
 class VitonThread(QThread):
     frameCaptured = pyqtSignal(QImage)
