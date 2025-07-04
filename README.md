@@ -16,13 +16,13 @@ Our method simply overlay the synthesized garment on the top of human body witho
 ## Installation
 
 ```
-git clone git@github.com:ZaiqiangWu/RTV.git
+git clone https://github.com/ZaiqiangWu/RTV.git
 cd RTV
 ```
 
 ### Environment
 ```
-sudo apt install gcc g++ libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shape0-dev libxcb-sync-dev libxcb-xfixes0-dev libxcb-xkb-dev
+sudo apt install gcc g++ libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shape0-dev libxcb-sync-dev libxcb-xfixes0-dev libxcb-xkb-dev libpulse-mainloop-glib0
 conda create -n rtv python=3.9
 conda activate rtv
 pip install -r requirements.txt
@@ -33,6 +33,7 @@ pip install git+https://github.com/ZaiqiangWu/ROMP.git#subdirectory=simple_romp
 ### Weights
 Download our pretrained checkpoints by running the following command. We will release the code for training your own garment items later.
 ```
+sudo apt install git-lfs
 git lfs install
 git clone https://huggingface.co/wuzaiqiang/rtv_ckpts
 ```
