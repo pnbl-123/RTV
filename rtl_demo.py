@@ -13,13 +13,26 @@ from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from util.image_warp import crop2_169, resize_img
 
 from VITON.viton_upperbody import FrameProcessor
+from util.camera_util import list_available_cameras
 
 class VitonThread(QThread):
     frameCaptured = pyqtSignal(QImage)
 
     def __init__(self,garment_id_list):
         super().__init__()
-        self.cap = cv2.VideoCapture(0)
+        cameras = list_available_cameras()
+        if not cameras:
+            print("No cameras found.")
+        print("Available cameras:")
+        for idx, (cam_id, name) in enumerate(cameras):
+            print(f"[{cam_id}] {name}")
+
+        selected = int(input("Select camera by ID: "))
+
+
+        self.cap = cv2.VideoCapture(selected)
+        if not self.cap.isOpened():
+            print("Failed to open the selected camera.")
         self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
         self.running = True
         self.frame_processor = FrameProcessor(garment_id_list)
