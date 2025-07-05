@@ -20,17 +20,7 @@ class VitonThread(QThread):
 
     def __init__(self,garment_id_list):
         super().__init__()
-        cameras = list_available_cameras()
-        if not cameras:
-            print("No cameras found.")
-        print("Available cameras:")
-        for idx, (cam_id, name) in enumerate(cameras):
-            print(f"[{cam_id}] {name}")
-
-        selected = int(input("Select camera by ID: "))
-
-
-        self.cap = cv2.VideoCapture(selected)
+        self.cap = cv2.VideoCapture(0)
         if not self.cap.isOpened():
             print("Failed to open the selected camera.")
         self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
@@ -72,7 +62,7 @@ class CameraApp(QMainWindow):
         self.setMinimumSize(200, 150)
         ## enable fullscreen
         self.setWindowFlag(Qt.FramelessWindowHint)
-        #self.showFullScreen()
+        self.showFullScreen()
 
         self.image_label = QLabel(self)
         self.image_label.setAlignment(Qt.AlignCenter)
