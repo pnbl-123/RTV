@@ -10,7 +10,7 @@ Our method simply overlay the synthesized garment on the top of human body witho
 
 ![Demo GIF](assets/output.gif)
 
-[Watch on YouTube](https://www.youtube.com/watch?v=7hm1yBsFzHc)
+Check our [tight garment demo](https://www.youtube.com/watch?v=dub0pJ2kXA4), and [loose garment demo](https://www.youtube.com/watch?v=7hm1yBsFzHc) on YouTube.
 
 
 ## Installation
@@ -42,7 +42,7 @@ git clone https://huggingface.co/wuzaiqiang/rtv_ckpts
 ### Real-time virtual try-on
 Please make sure that there is a webcam connected to your PC before running the following command.
 ```
-python demo.py
+python rtl_demo.py
 ```
 
 ## BibTeX
