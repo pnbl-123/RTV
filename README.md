@@ -32,7 +32,7 @@ pip install git+https://github.com/ZaiqiangWu/ROMP.git#subdirectory=simple_romp
 ```
 
 ### Weights
-Download our pretrained checkpoints by running the following command. We will release the code for training your own garment items later.
+Download our pretrained checkpoints by running the following command. Please refer to [this page](./training_procedure.md) for how to train your own garment items.
 ```
 sudo apt install git-lfs
 git lfs install
