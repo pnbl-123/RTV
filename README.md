@@ -10,7 +10,7 @@ Our method simply overlay the synthesized garment on the top of human body witho
 
 ![Demo GIF](assets/output.gif)
 
-Check our [tight garment demo](https://www.youtube.com/watch?v=dub0pJ2kXA4), and [loose garment demo](https://www.youtube.com/watch?v=7hm1yBsFzHc) on YouTube.
+Check our [tight garment demo](https://www.youtube.com/watch?v=dub0pJ2kXA4) and [loose garment demo](https://www.youtube.com/watch?v=7hm1yBsFzHc) on YouTube.
 
 
 ## Installation
